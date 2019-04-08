@@ -3,7 +3,7 @@ package com.github.daggerok
 import java.util.UUID
 
 import akka.actor.ActorSystem
-import akka.stream.{ActorMaterializer, scaladsl}
+import akka.stream.ActorMaterializer
 import akka.stream.scaladsl.{Sink, Source}
 import org.slf4j.LoggerFactory
 import org.springframework.boot.autoconfigure.SpringBootApplication
@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation._
 import org.springframework.web.reactive.function.server
 import org.springframework.web.reactive.function.server.RequestPredicates.{GET, POST}
 import org.springframework.web.reactive.function.server.RouterFunctions.route
-import org.springframework.web.reactive.function.server.{RequestPredicate, RequestPredicates, RouterFunction, RouterFunctions, ServerRequest, ServerResponse}
+import org.springframework.web.reactive.function.server.{RouterFunction, RouterFunctions, ServerRequest, ServerResponse}
 import reactor.core.publisher.{Flux, Mono}
 
 import scala.beans.BeanProperty
@@ -47,7 +47,8 @@ trait Tweets extends ReactiveMongoRepository[Tweet, UUID]
 @Configuration
 class AkkaConfig {
   @Bean def actorSystem = ActorSystem.create("TweetsSystem")
-  @Bean def actorMaterializer  = ActorMaterializer.create(actorSystem)
+
+  @Bean def actorMaterializer = ActorMaterializer.create(actorSystem)
 }
 
 @RestController
@@ -61,19 +62,19 @@ class MvcResource(val tweets: Tweets,
     tweets.findById(id).doFinally(_ => log.info("mvcOne"))
 
   @GetMapping(Array("/api/mvc/tags"))
-  def mvcTags() = Source
-    .fromPublisher(tweets.findAll()) // not akka.stream.scaladsl.JavaFlowSupport.Source
-    .map(_.hashTags)
-    .reduce((t1, t2) => t1 ++ t2) // flatMapConcat / flatMapMerge?
-    .mapConcat(identity)
-    //.map(_.name)
-    .runWith(Sink.asPublisher(true)) {
-      actorMaterializer
-    }
+  def mvcTags =
+    Source
+      .fromPublisher(tweets.findAll()) // not akka.stream.scaladsl.JavaFlowSupport.Source
+      .map(_.hashTags)
+      .reduce((t1, t2) => t1 ++ t2) // flatMapConcat / flatMapMerge?
+      .mapConcat(identity)
+      //.map(_.name)
+      .runWith(Sink.asPublisher(true)) {
+        actorMaterializer
+      }
 
   @GetMapping(Array("/**"))
-  def mvcGet() =
-    tweets.findAll().doFinally(_ => log.info("mvcGet"))
+  def mvcGet = tweets.findAll().doFinally(_ => log.info("mvcGet"))
 
   @PostMapping(Array("/api/mvc/**"))
   def mvcPost(@RequestBody map: java.util.Map[String, String]): Mono[Tweet] = {
@@ -95,7 +96,7 @@ class TweetsHandlers(val tweets: Tweets) {
     ServerResponse.ok().body(tweet, classOf[Tweet])
   }
 
-  def handleGet(request: server.ServerRequest): Mono[ServerResponse] =
+  def handleGet(request: server.ServerRequest) =
     ServerResponse.ok().body(tweets.findAll().doFinally(_ => log.info("handleGet")), classOf[Tweet])
 
   def handlePost(request: server.ServerRequest): Mono[ServerResponse] = {
@@ -111,7 +112,7 @@ class TweetsHandlers(val tweets: Tweets) {
 @Configuration
 class RouterFunctionBuilderConfig(val handlers: TweetsHandlers) {
   @Bean
-  def routerFunctionBuilder(): RouterFunction[ServerResponse] =
+  def routerFunctionBuilder =
     RouterFunctions.route()
       .POST("/api/fnb/**", handlers.handlePost _)
       .GET("/api/fnb/{id}", handlers.handleOne _)
@@ -122,17 +123,17 @@ class RouterFunctionBuilderConfig(val handlers: TweetsHandlers) {
 @Configuration
 class RouterFunctionConfig(val handlers: TweetsHandlers) {
   @Bean
-  def routerFunction(): RouterFunction[ServerResponse] =
+  def routerFunction: RouterFunction[ServerResponse] =
     route(POST("/api/fn/**"), handlers.handlePost _)
       .andRoute(GET("/api/fn/{id}"), handlers.handleOne _)
       .andRoute(GET("/api/fn/**"), handlers.handleGet _)
 }
 
 @SpringBootApplication
-class SpringBootScalaApplication {
+class SpringBootScalaApplication(tweets: Tweets) {
   private val log = LoggerFactory.getLogger(classOf[SpringBootScalaApplication])
 
-  @Bean def init(tweets: Tweets): ApplicationRunner = args => {
+  @Bean def init: ApplicationRunner = args => {
     val max = Author("max")
     val dag = Author("dag")
     val daggerok = Author("daggerok")
