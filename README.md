@@ -1,10 +1,12 @@
-# scala + spring-boot + gradle-kotlin-dsl
+# scala + spring-boot + gradle-kotlin-dsl [![Build Status](https://travis-ci.org/daggerok/spring-boot-reactive-scala-example.svg?branch=master)](https://travis-ci.org/daggerok/spring-boot-reactive-scala-example)
 Build Reactive apps with Spring Boot Gradle Kotlin DSL starter
 
 ## build and run
 
 ```bash
-./gradlew ; java -jar ./build/libs/*.jar
+./gradlew
+java -jar ./build/libs/*.jar
+http :8080
 ```
 
 ## Spring MVC

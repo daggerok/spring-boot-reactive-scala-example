@@ -1,13 +1,15 @@
 {
   "name": "docs",
-  "version": "1.0.0-SNAPSHOT",
+  "version": "1.0.1-SNAPSHOT",
   "description": "Spring Boot Gradle Kotlin DSL Reactive Scala",
   "main": "index.js",
   "scripts": {
     "start": "vuepress dev",
-    "build": "cross-env BASE_HREF='/spring-boot-reactive-scala-example/' vuepress build"
+    "build": "vuepress build",
+    "gh-pages": "cross-env BASE_HREF='/spring-boot-reactive-scala-example/' npm run build"
   },
   "keywords": [
+    "scala",
     "vuepress",
     "spring-boot",
     "gradle-kotlin-dsl"
@@ -15,6 +17,7 @@
   "author": "Maksim Kostromin <daggerok@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "@types/node": "12.0.10",
     "cross-env": "5.2.0",
     "vuepress": "0.14.10"
   }

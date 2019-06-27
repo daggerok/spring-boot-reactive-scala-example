@@ -1,6 +1,7 @@
 .gradle*
 build/
 target/
+/out/
 
 ### STS ###
 .apt_generated
@@ -24,6 +25,6 @@ target/
 /dist/
 /nbdist/
 /.nb-gradle/
-
+package-lock.json
 node_modules/
 .vuepress/dist/
