@@ -22,6 +22,7 @@ import reactor.core.publisher.{Flux, Mono}
 
 import scala.beans.BeanProperty
 import scala.collection.JavaConverters
+import scala.jdk.javaapi.CollectionConverters
 import scala.language.postfixOps
 
 @Document
@@ -79,7 +80,7 @@ class MvcResource(val tweets: Tweets,
   @PostMapping(Array("/api/mvc/**"))
   def mvcPost(@RequestBody map: java.util.Map[String, String]): Mono[Tweet] = {
     log.info("mvcPost")
-    val body = JavaConverters.mapAsScalaMap(map).getOrElse("body", "")
+    val body = CollectionConverters.asScala(map).getOrElse("body", "")
     val tweet = Tweet(body, Author("MVC"))
     tweets.save(tweet)
   }

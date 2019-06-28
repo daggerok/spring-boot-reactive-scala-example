@@ -85,6 +85,10 @@ tasks {
     distributionType = Wrapper.DistributionType.BIN
   }
 
+  withType<ScalaCompile> {
+    scalaCompileOptions.additionalParameters = listOf("-deprecation")
+  }
+
   withType<BootJar>().configureEach {
     launchScript()
   }
@@ -149,6 +153,7 @@ tasks["start"].dependsOn("npm_start")
 tasks["npm_start"].dependsOn("npm_i")
 tasks["build"].dependsOn("npm_run_build")
 tasks["npm_run_build"].dependsOn("npm_i")
+tasks["npm_run_hg-pages"].dependsOn("npm_i")
 
 tasks["composeUp"].dependsOn("assemble")
 tasks["composeUp"].shouldRunAfter("clean", "assemble")
