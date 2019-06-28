@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>scala + spring-boot + gradle-kotlin-dsl ![Build Status](https://travis-ci.org/daggerok/spring-boot-reactive-scala-example.svg?branch=master)</title>
+    <meta name="description" content="">
+    <link rel="icon" href="/spring-boot-reactive-scala-example/favicon.ico">
+    
+    <link rel="preload" href="/spring-boot-reactive-scala-example/assets/css/0.styles.5b6a967f.css" as="style"><link rel="preload" href="/spring-boot-reactive-scala-example/assets/js/app.628bd1ed.js" as="script"><link rel="preload" href="/spring-boot-reactive-scala-example/assets/js/3.032b80e0.js" as="script"><link rel="prefetch" href="/spring-boot-reactive-scala-example/assets/js/2.00d0eedf.js"><link rel="prefetch" href="/spring-boot-reactive-scala-example/assets/js/4.e3d4f6bf.js">
+    <link rel="stylesheet" href="/spring-boot-reactive-scala-example/assets/css/0.styles.5b6a967f.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/spring-boot-reactive-scala-example/" class="home-link router-link-exact-active router-link-active"></a> <div class="links" style="max-width:nullpx;"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"> <a href="https://github.com/daggerok/spring-boot-gradle-kotlin-dsl-example" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><nav class="nav-links"> <a href="https://github.com/daggerok/spring-boot-gradle-kotlin-dsl-example" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav>  <!----> </div> <div class="page"> <div class="content"><h1 id="scala-spring-boot-gradle-kotlin-dsl"><a href="#scala-spring-boot-gradle-kotlin-dsl" aria-hidden="true" class="header-anchor">#</a> scala + spring-boot + gradle-kotlin-dsl <a href="https://travis-ci.org/daggerok/spring-boot-reactive-scala-example" target="_blank" rel="noopener noreferrer"><img src="https://travis-ci.org/daggerok/spring-boot-reactive-scala-example.svg?branch=master" alt="Build Status"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></h1> <p>Build Reactive apps with Spring Boot Gradle Kotlin DSL starter</p> <h2 id="build-and-run"><a href="#build-and-run" aria-hidden="true" class="header-anchor">#</a> build and run</h2> <div class="language-bash extra-class"><pre class="language-bash"><code>./gradlew
+java -jar ./build/libs/*.jar
+http :8080
+</code></pre></div><h2 id="spring-mvc"><a href="#spring-mvc" aria-hidden="true" class="header-anchor">#</a> Spring MVC</h2> <div class="language-bash extra-class"><pre class="language-bash"><code>http :8080/api/mvc <span class="token comment"># or: http :8080</span>
+http :8080/api/mvc body<span class="token operator">=</span><span class="token string">&quot;hello mvc&quot;</span>
+http :8080/api/mvc/cd8063ca-4ce7-4b34-81e5-21fe3c066e1d
+http :8080/api/mvc/tags
+</code></pre></div><h2 id="router-function-builder"><a href="#router-function-builder" aria-hidden="true" class="header-anchor">#</a> Router Function builder</h2> <div class="language-bash extra-class"><pre class="language-bash"><code>http :8080/api/fnb
+http :8080/api/fnb body<span class="token operator">=</span><span class="token string">&quot;hello builder&quot;</span>
+http :8080/api/fnb/94b6f180-1724-49f9-8b62-8d322f4f8f63
+</code></pre></div><h2 id="router-function"><a href="#router-function" aria-hidden="true" class="header-anchor">#</a> Router Function</h2> <div class="language-bash extra-class"><pre class="language-bash"><code>http :8080/api/fn
+http :8080/api/fn body<span class="token operator">=</span><span class="token string">&quot;hello function&quot;</span>
+http :8080/api/fn/40156273-a6dc-4f6c-a218-1b84d5c30929
+</code></pre></div><p>links:</p> <ul><li>see <a href="https://www.youtube.com/watch?v=E_YZwrv-zTk" target="_blank" rel="noopener noreferrer">YouTube: Spring Tips: Bootiful, Reactive Scala<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div> <div class="page-edit"><!----> <div class="last-updated"><span class="prefix">Updated at: </span> <span class="time">6/28/2019, 1:12:49 AM</span></div></div> <!----> </div> <!----></div></div>
+    <script src="/spring-boot-reactive-scala-example/assets/js/app.628bd1ed.js" defer></script><script src="/spring-boot-reactive-scala-example/assets/js/3.032b80e0.js" defer></script>
+  </body>
+</html>
