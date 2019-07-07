@@ -11,7 +11,7 @@ object Globals {
   const val scalaMajorVersion = "2.13" // "2.12"
   const val akkaStreamVersion = "2.5.23"
   const val gradleWrapperVersion = "5.5"
-  const val junitJupiterVersion = "5.5.0-RC2"
+  const val junitJupiterVersion = "5.5.0"
   const val reactiveStreamsVersion = "1.0.2"
   const val springBootVersion = "2.2.0.M4"
 
