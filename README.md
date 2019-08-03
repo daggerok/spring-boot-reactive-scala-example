@@ -37,3 +37,4 @@ http :8080/api/fn/40156273-a6dc-4f6c-a218-1b84d5c30929
 links:
 
 * see [YouTube: Spring Tips: Bootiful, Reactive Scala](https://www.youtube.com/watch?v=E_YZwrv-zTk)
+* update / [migrate Vuepress](https://v1.vuepress.vuejs.org/miscellaneous/migration-guide.html#vuepress-style-styl) 0.x -> 1.x

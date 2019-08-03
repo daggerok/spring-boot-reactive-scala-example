@@ -1,5 +1,13 @@
-plugins { 
+plugins {
+  idea
   `kotlin-dsl`
+}
+
+idea {
+  module {
+    isDownloadJavadoc = false
+    isDownloadSources = false
+  }
 }
 
 repositories { 

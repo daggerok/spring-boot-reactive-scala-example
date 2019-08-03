@@ -17,8 +17,8 @@
   "author": "Maksim Kostromin <daggerok@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "@types/node": "12.0.10",
+    "@types/node": "12.6.9",
     "cross-env": "5.2.0",
-    "vuepress": "0.14.10"
+    "vuepress": "1.0.3"
   }
 }
